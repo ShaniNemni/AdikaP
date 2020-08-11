@@ -9,6 +9,12 @@
     padding:0 15px;
 }
 
+.a:hover{
+    color:$light_blue;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 .color-red{
     color:$red !important;
 }
