@@ -36,10 +36,23 @@
         }
     }
 
+
     @media (min-width:376px) {
         .container {
             max-width:100%
         }
-
     }
+    
+    @media (max-width:375px){
+        .web-title { 
+            text-align: center;
+            .logo{
+                width: 80px;
+            }
+        }
+
+        .side-menu-icon{
+            font-size: 25px;
+        }
+    } 
 }

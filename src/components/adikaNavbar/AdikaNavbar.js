@@ -1,21 +1,34 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './AdikaNavbar.scss';
-
 import {FiUser,FiShoppingCart,FiHeart,FiSearch} from 'react-icons/fi';
 import { getImage } from '../../assets/images/Images';
-import AdikaBadge from './AdikaBadge';
+import AdikaBadge from '../adikaBadge/AdikaBadge';
+import {GiHamburgerMenu} from 'react-icons/gi';
+import AdikaDrawer from '../adikaDrawer/AdikaDrawer';
 
 const adikaLogo = getImage('adikaLogo');
 const classNameA = 'padding-horizontal-15';
-const AdikaNavbar = () => { 
+const menuIconClassname = 'menu-icon margin-horizontal-5';
+const AdikaNavbar = () => {  
+    const [drawerPressed,setDrawer] = useState(false);
+
+    const toggleDrawer = () => {
+        const drawerValue = !drawerPressed;
+        setDrawer(drawerValue);
+    }
+ 
     return(
         <div className='navbar-container'>
             <div className='container'>
                 <div className='row'>
-                    <div className='web-title col-2'>
+                    <div className={'mobile-only col-3'}> 
+                        <GiHamburgerMenu onClick={toggleDrawer} className={'side-menu-icon'}/>
+                        <AdikaDrawer drawerPressed={drawerPressed} drawerPosition={'left'} toggleDrawer={toggleDrawer}/>
+                    </div>
+                    <div className='web-title col-md-2 col-6'>
                         <img src={adikaLogo} className='logo'/>
                     </div>
-                    <div className='col-8'>
+                    <div className='col-8 desktop-only'>
                         <ul className='menu-list'>
                             <li className='menu-item'>
                                 <a className={classNameA}>Demo</a>
@@ -43,11 +56,11 @@ const AdikaNavbar = () => {
                         </ul>
                     </div>
 
-                    <div className='menu-icons col-2'>
-                        <FiSearch className='menu-icon margin-horizontal-5'/>
-                        <FiUser className='menu-icon margin-horizontal-5'/>
-                        <FiHeart className='menu-icon margin-horizontal-5'/>
-                        <FiShoppingCart className='menu-icon margin-horizontal-5'/>
+                    <div className='menu-icons col-md-2 col-3'>
+                        <FiSearch className={menuIconClassname}/>
+                        <FiUser className={menuIconClassname + ' desktop-only'}/>
+                        <FiHeart className={menuIconClassname + ' desktop-only'}/>
+                        <FiShoppingCart className={menuIconClassname}/>
                     </div>
                 </div>
             </div>
