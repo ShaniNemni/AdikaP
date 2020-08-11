@@ -1,7 +1,7 @@
 
 import React,{useState} from 'react';
 import './DisplayConditions.scss';
-import AdikaSort from '../../components/adikaConditions/AdikaSort';
+import AdikaSort from '../../components/adikaConditions/adikaSort/AdikaSort';
 
 const DisplayConditions = () => {
     return(
