@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+
+.navbar-container {
+    margin-top: 20px;
+    .menu-list{
+        display: flex;
+        list-style-type: none;
+        justify-content: center;
+        padding: 0;
+
+        .menu-item{
+            position: relative;
+
+            a{
+                color:$black;
+                font-size:14px;
+            }
+            a:hover{
+                color:$light_blue;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        
+    }
+
+    .logo {
+        width: 60px;
+    }
+
+    .menu-icons{
+        text-align: right;
+
+        .menu-icon{
+            font-size: 20px;
+        }
+    }
+
+    @media (min-width:376px) {
+        .container {
+            max-width:100%
+        }
+
+    }
+}
