@@ -1,6 +1,7 @@
 import React from 'react';
 import AdikaNavbar from "../../components/adikaNavbar/AdikaNavbar";
 import AdikaCover from '../../components/adikaCover/AdikaCover';
+import CategoriesList from '../categories/CategoriesList ';
 
 const HomePage = () => {
     const coverImageWomanClass = 'women-cover';
@@ -9,6 +10,7 @@ const HomePage = () => {
     return(
         <div>
             <AdikaNavbar/>
+            <CategoriesList/>
             <AdikaCover title= {coverTitle} description={coverDescritption} imageClass={coverImageWomanClass}/>
         </div>
     )
