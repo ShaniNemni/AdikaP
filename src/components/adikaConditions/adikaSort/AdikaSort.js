@@ -1,8 +1,9 @@
 import React,{useState} from 'react';
-import './AdikaConditions.scss';
+import '../AdikaConditions.scss';
 import {IoIosArrowUp,IoIosArrowDown} from 'react-icons/io';
 import AdikaDrawer from '../../adikaDrawer/AdikaDrawer';
-import AdikaSortDrawerMobile from '../AdikaSortDrawerMobile';
+import AdikaSortDrawerMobile from '../adikaSort/AdikaSortDrawerMobile';
+import AdikaSortWeb from './AdikaSortWeb';
 
 const SORT_BY = 'Sort by';
 const AdikaSort = () => {
@@ -35,6 +36,11 @@ const AdikaSort = () => {
         return displayIcon(sortByPressedWeb);
     }
 
+    const getWebClass = () => {
+        return sortByPressedWeb ? 'display-web-sort' : 'hide-web-sort'; 
+    }
+
+    const webClass = getWebClass();
     return(
         <div className='sort-by-container'>
             <div className={'mobile-only'}>
@@ -48,8 +54,11 @@ const AdikaSort = () => {
             </div>
             <div className={'desktop-only'}>
                 <div className={'sort-selector'} onClick={toggleSortByWeb}> 
-                    <span class={'sort-by-title'}>{SORT_BY}</span>
+                    <span className={'sort-by-title'}>{SORT_BY}</span>
                     {displayIconWeb()}
+                </div>
+                <div className={webClass}>
+                    {<AdikaSortWeb/>}
                 </div>
             </div>
         </div>
