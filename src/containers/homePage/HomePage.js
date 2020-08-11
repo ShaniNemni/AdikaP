@@ -2,6 +2,7 @@ import React from 'react';
 import AdikaNavbar from "../../components/adikaNavbar/AdikaNavbar";
 import AdikaCover from '../../components/adikaCover/AdikaCover';
 import CategoriesList from '../categories/CategoriesList ';
+import DisplayConditions from '../displayConditions/DisplayConditions';
 
 const HomePage = () => {
     const coverImageWomanClass = 'women-cover';
@@ -12,6 +13,7 @@ const HomePage = () => {
             <AdikaNavbar/>
             <CategoriesList/>
             <AdikaCover title= {coverTitle} description={coverDescritption} imageClass={coverImageWomanClass}/>
+            <DisplayConditions/>
         </div>
     )
 }

@@ -6,20 +6,14 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import './AdikaDrawer.scss';
  
-const AdikaDrawer = ({drawerPressed,drawerPosition,toggleDrawer}) => {
+const AdikaDrawer = (props) => {
     return(
         <SwipeableDrawer
-            open = {drawerPressed}
-            anchor = {drawerPosition}
-            onClose = {toggleDrawer}
+            open = {props.drawerPressed}
+            anchor = {props.drawerPosition}
+            onClose = {props.toggleDrawer}
         >
-        <List>
-            {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-                <ListItemText primary={text} />
-            </ListItem>
-            ))}
-        </List>
+            {props.children}
        </SwipeableDrawer>
     )
 }
