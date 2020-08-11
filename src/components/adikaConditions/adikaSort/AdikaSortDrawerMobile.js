@@ -1,5 +1,5 @@
 import React from 'react';
-import {SortOptionsList} from '../../common/SortOptionsList';
+import {SortOptionsList} from '../../../common/Lists';
 
 const SORT_BY = 'SORT BY';
 const AdikaSortDrawerMobile = () => {
