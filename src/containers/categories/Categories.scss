@@ -19,14 +19,14 @@
     }
 
 
-    @media (min-width:376px) {
+    @media (min-width:$min_width) {
         hr{
             margin-top:0;
             margin-bottom: 5px;
         }    
     }
 
-    @media (max-width:375px){
+    @media (max-width:$max-width){
         .display-categories-close{
             display: none;
         }

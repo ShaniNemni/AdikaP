@@ -32,13 +32,13 @@
     }
 
 
-    @media (min-width:376px) {
+    @media (min-width:$min-width) {
         .container {
             max-width:100%
         }
     }
     
-    @media (max-width:375px){
+    @media (max-width:$max-width){
         .web-title { 
             text-align: center;
             .logo{
