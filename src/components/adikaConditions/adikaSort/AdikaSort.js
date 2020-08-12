@@ -48,9 +48,9 @@ const AdikaSort = () => {
                     <span className={'sort-by-title'}>{SORT_BY}</span>
                     {displayIconMobile()}
                 </div>
-                <AdikaDrawer drawerPressed={sortByPressedMobile} toggleDrawer={toggleSortByMobile} drawerPosition={'bottom'}>
-                        <AdikaSortDrawerMobile/>
-                    </AdikaDrawer>
+                 <AdikaDrawer drawerPressed={sortByPressedMobile} toggleDrawer={toggleSortByMobile} drawerPosition={'bottom'}>
+                    <AdikaSortDrawerMobile/>
+                 </AdikaDrawer>
             </div>
             <div className={'desktop-only'}>
                 <div className={'sort-selector'} onClick={toggleSortByWeb}> 
