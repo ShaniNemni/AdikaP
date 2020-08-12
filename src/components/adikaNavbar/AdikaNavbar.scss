@@ -4,21 +4,16 @@
     margin-top: 20px;
     .menu-list{
         display: flex;
-        list-style-type: none;
+        //list-style-type: none;
         justify-content: center;
         padding: 0;
 
         .menu-item{
             position: relative;
 
-            a{
+            .menu-title{
                 color:$black;
                 font-size:14px;
-            }
-            a:hover{
-                color:$light_blue;
-                text-decoration: none;
-                cursor: pointer;
             }
         }
         

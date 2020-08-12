@@ -7,8 +7,9 @@ import {GiHamburgerMenu} from 'react-icons/gi';
 import AdikaDrawer from '../adikaDrawer/AdikaDrawer';
 
 const adikaLogo = getImage('adikaLogo');
-const classNameA = 'padding-horizontal-15';
+const classNameA = 'menu-title padding-horizontal-15';
 const menuIconClassname = 'menu-icon margin-horizontal-5';
+
 const AdikaNavbar = () => {  
     const [drawerPressed,setDrawer] = useState(false);
 
