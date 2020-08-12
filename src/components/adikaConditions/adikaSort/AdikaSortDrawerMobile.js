@@ -7,7 +7,7 @@ const AdikaSortDrawerMobile = () => {
     const renderOptions = () => {
         const options = SortOptionsList.map(sort => {
             return(
-                <a className={'sort-option-title'}>{sort.sortName}</a>
+                <a key={sort.sortID} className={'sort-option-title'}>{sort.sortName}</a>
             )
         })
 

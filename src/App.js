@@ -3,9 +3,7 @@ import HomePage from './containers/homePage/HomePage';
 
 function App() {
   return (
-    <div>
       <HomePage/>
-    </div>
   );
 }
 
