@@ -9,10 +9,18 @@
     padding:0 15px;
 }
 
-.a:hover{
-    color:$light_blue;
+a:hover{
+    color:$light_blue!important;
     text-decoration: none;
     cursor: pointer;
+}
+
+a:active{
+    color:$light_blue;  
+}
+
+li{
+    list-style-type: none;
 }
 
 .color-red{
