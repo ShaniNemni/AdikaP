@@ -3,14 +3,14 @@
 .cover-image {
     width: 100%;
     height: 170px;
-    background-size: cover;
     padding: 30px;
     text-align: center;
+    position: relative;
 
     .common-title-description {
         font-weight: bold;
         color:$white;
-        font-weight: bold;
+        z-index:100;
     }
     .cover-title {
         font-size: 22px;
@@ -19,7 +19,21 @@
         font-size: 16px;
     }
 }
+
+.cover-background:before{
+    background-color: black;
+    opacity: 0.55;
+    width: 100%;
+    z-index: 90;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+    content: "";
+}
 .women-cover{
     background-image: url('https://cdn.shopify.com/s/files/1/0332/6420/5963/collections/jeans-828693_1920_3750x.jpg?v=1586521480');
-    opacity: 1;
+    background-size:cover;
+    background-position: center center;
+    background-repeat: no-repeat;
 }

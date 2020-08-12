@@ -3,10 +3,14 @@ import './AdikaCover.scss';
 
 const AdikaCover = ({title,description,imageClass}) => {
     return(
-            <div className={'cover-image '+ imageClass}>
-                <div className={'cover-title common-title-description'}>{title}</div>
-                <div className={'cover-description common-title-description'}>{description}</div>
+        <div className={'cover-image '+ imageClass}>
+            <div className={'cover-background'}>
+                <div className={'common-title-description'}>                     
+                    <h1 className={'cover-title'}>{title}</h1>
+                    <div className={'cover-description'}>{description}</div>
+                </div>
             </div>
+        </div>
     )
 }
 
