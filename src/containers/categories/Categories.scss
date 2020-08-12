@@ -36,12 +36,12 @@
             font-weight: bold;
         }
 
-        li:not(:first-child){
+        li{
             margin-top:5px;
         }
 
         hr.mobile-only{
-            margin-bottom: 5px;
+            margin-bottom: 0;
         }
     }
 }

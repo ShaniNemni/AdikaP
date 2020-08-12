@@ -21,27 +21,27 @@ const CategoriesList = () => {
     }
 
     const renderCategories = () => {
-        const displayCategoriesClassname = categoriesPressed ? '' : 'display-categories-close';
         const categories = CATEGORIES_LIST.map(category => 
-            <li className={`col-12 col-md-2 ${displayCategoriesClassname}`} key={category.categoryID}>
+            <li className={`col-12 col-md-2`} key={category.categoryID}>
                 <a className={'category-name'}>{category.name}</a>
             </li>
         )
-
+        
         return(
             <ul className={'row'}>
                 {categories}
             </ul>
         )
     }
-
-
+    
+    
+    const displayCategoriesClassname = categoriesPressed ? '' : 'display-categories-close';
     return(
         <div className={'categories-container'}>
             <hr/>
              <div className={'categories-title mobile-only'} onClick={toggleCategories}>{'Categories'} {displayIcon()} </div>
              <hr className={'mobile-only'}/>
-             <div className={'container'}>
+             <div className={`container ${displayCategoriesClassname}`}>
                  {renderCategories()}
              </div>
         </div>
