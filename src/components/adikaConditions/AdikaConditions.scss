@@ -12,14 +12,18 @@
         margin-left: 8px;
         margin-top: 2px;
     }
+
     .sort-selector{
         border:1px solid #ddd;
         border-radius: 40px;
         padding: 1px 7px 7px 15px;
         width: 160px;
         text-align: left;
-        margin-top: 30px;
     }
+    .sort-selector:hover{
+        color:$light_blue
+    }
+
     .display-web-sort{
         display: block;
     }
@@ -70,7 +74,7 @@
     }
 }
 
-@media(min-width:400px) {
+@media(min-width:$min-width) {
     .sort-selector {
         position: relative;
     }

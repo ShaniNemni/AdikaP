@@ -2,11 +2,91 @@
 
 .adika-filter-container {
     .icon-title-view{
+        cursor: pointer;
+
+        .icon-filter{
+            font-size: 14px;
+        }
         .filter-title{
             color:$gray_text;
             font-size: 14px;
-            cursor: pointer;
+            margin:2px 5px;
         
         }
+        .filter-title:hover{
+            color:$light_blue;
+        }    
+    }
+
+    .display-filters-close{
+        display: none;
     }
 }
+
+.filter-view{
+    background: $black;
+    position: relative;
+
+    .filter-title-drawer{
+        font-weight: bold;
+        font-size: 22px;
+        color: $white;
+        padding:10px;
+        text-align: left;
+    }
+
+    .filter-md-close{
+        position: absolute;
+        right:10px;
+    }
+}
+
+.filters-view{
+    max-width: 100%;
+    border-bottom: 1px solid #e5e5e5;    
+
+    .filter-key{
+        margin-top: 5px;
+        font-size: 16px;
+        text-transform:uppercase;
+        font-weight: bold;
+        position: relative;
+        margin-bottom: 0;
+        padding-bottom: 20px;
+    }
+    
+    .filter-key:after{
+        content: "";
+        width:60px;
+        height:2px;
+        background-color: $black;
+        bottom:15px;
+        position: absolute;
+        left:0;
+    }
+
+    .filter-block{
+        max-height: 230px;
+        list-style: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+}
+
+.colors-span{
+    display: block;
+    width: 24px;
+    height: 24px;
+    padding: 2px;
+    border-radius: 50%;
+    margin-right: 5px;
+    border:1px solid transparent;
+}
+
+.li-option {
+    line-height: 25px;
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+}
+
