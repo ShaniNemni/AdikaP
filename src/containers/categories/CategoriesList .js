@@ -3,6 +3,7 @@ import './Categories.scss';
 import {IoIosArrowUp,IoIosArrowDown} from 'react-icons/io';
 import CategoryItem from './CategoryItem';
 
+const CATEGORIES_LIST = [{name:'first Category',categoryID:1},{name:'second Category',categoryID:2},{name:'third Category',categoryID:3},{name:'four Category',categoryID:4},{name:'five Category',categoryID:5},{name:'six Category',categoryID:6}]
 const CategoriesList = () => {
     const [categoriesPressed,setCategroiesPressed] = useState(false);
 
@@ -13,39 +14,36 @@ const CategoriesList = () => {
 
     const displayIcon = () => {
         if(categoriesPressed) {
-            return <IoIosArrowUp className={'arrow-icon'}/>
+            return <IoIosArrowUp/>
         }
 
-        return <IoIosArrowDown className={'arrow-icon'}/>
-
+        return <IoIosArrowDown/>
     }
 
-    const displayCategoriesClassname = categoriesPressed ? 'display-categories-open' : 'display-categories-close';
+    const renderCategories = () => {
+        const displayCategoriesClassname = categoriesPressed ? '' : 'display-categories-close';
+        const categories = CATEGORIES_LIST.map(category => 
+            <li className={`col-12 col-md-2 ${displayCategoriesClassname}`} key={category.categoryID}>
+                <a className={'category-name'}>{category.name}</a>
+            </li>
+        )
+
+        return(
+            <ul className={'row'}>
+                {categories}
+            </ul>
+        )
+    }
+
+
     return(
         <div className={'categories-container'}>
-                <div className={'mobile-only mobile-container'}>
-                    <div className={'title-and-icon'}>
-                        <a className={'categories-title'} onClick={toggleCategories}>{'Categories'}</a>
-                        {displayIcon()}
-                    </div>
-
-                    <div className={displayCategoriesClassname}>
-                        <CategoryItem categoryName={'first Category'}/>
-                        <CategoryItem categoryName={'second Category'}/>
-                        <CategoryItem categoryName={'third Category'}/>
-                        <CategoryItem categoryName={'four Category'}/>
-                        <CategoryItem categoryName={'five Category'}/>
-                        <CategoryItem categoryName={'six Category'}/>
-                    </div>
-                </div>
-                <div className={'desktop-only desktop-container'}>
-                        <CategoryItem categoryName={'first Category'}/>
-                        <CategoryItem categoryName={'second Category'}/>
-                        <CategoryItem categoryName={'third Category'}/>
-                        <CategoryItem categoryName={'four Category'}/>
-                        <CategoryItem categoryName={'five Category'}/>
-                        <CategoryItem categoryName={'six Category'}/>
-                </div>
+            <hr/>
+             <div className={'categories-title mobile-only'} onClick={toggleCategories}>{'Categories'} {displayIcon()} </div>
+             <hr className={'mobile-only'}/>
+             <div className={'container'}>
+                 {renderCategories()}
+             </div>
         </div>
     )
 
