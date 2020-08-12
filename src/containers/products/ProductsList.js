@@ -10,7 +10,7 @@ const ProductsList = () => {
 
     const renderProducts = () => {
       const products = ProductListToDelete.map(product => {
-            return <ProductItem product={product}/>
+            return <ProductItem key={product.id} product={product}/>
         })
 
         return products;
