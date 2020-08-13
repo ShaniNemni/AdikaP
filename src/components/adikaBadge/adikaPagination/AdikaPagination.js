@@ -1,28 +1,24 @@
-import React,{useState,useEffect} from 'react';
+import React,{Component} from 'react';
 import './AdikaPagination.scss'
 import rootStores from '../../../stores';
 import { HOME_PAGE_SOTRE } from '../../../stores/Stores';
+import { observer } from 'mobx-react';
 
 const homePageStore = rootStores[HOME_PAGE_SOTRE];
-const AdikaPagination = ({pagesCount}) => {
-    const [selectedPage,setPage] = useState(1);
-
-    useEffect(() => {
-        const currentPage = homePageStore.getCurrentPage;
-        setPage(currentPage);
-    }, [selectedPage])
-
-    const onSelectPage = (pageNumber) => {
+@observer
+class AdikaPagination extends Component{
+    onSelectPage = (pageNumber) => {
         homePageStore.setCurrentPage(pageNumber);
-        setPage(pageNumber);
     }
 
-    const renderPagination = () => {
+    renderPagination = () => {
+        const {pagesCount} = this.props;
+        const selectedPage = homePageStore.getCurrentPage;
         const pages = pagesCount.map(page => {
             const isPageSelected = page === selectedPage;
             const selecetClass = isPageSelected ? 'current' : '';
             return(
-                  <li onClick={() => onSelectPage(page)} className={`page-number ${selecetClass}`} key={page}>{page}</li>
+                  <li onClick={() => this.onSelectPage(page)} className={`page-number ${selecetClass}`} key={page}>{page}</li>
             )
         })
 
@@ -32,13 +28,16 @@ const AdikaPagination = ({pagesCount}) => {
             </ul>
         );
     }
-    return(
-        <div className={'container'}>
-            <div className={'pagination-numbers'}>
-                {renderPagination()}
+
+    render(){
+        return(
+            <div className={'container'}>
+                <div className={'pagination-numbers'}>
+                    {this.renderPagination()}
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
 }
 
 export default AdikaPagination;

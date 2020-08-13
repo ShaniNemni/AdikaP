@@ -1,10 +1,15 @@
-import { observable, action,computed,toJS } from "mobx";
+import { observable, action,computed,toJS, observe } from "mobx";
 import CategoriesService from '../services/CategoriesService';
 import ProductsService from "../services/ProductsService";
+
+const resetCurrentPage = true;
 
 export default class HomePageStore{
     @observable
     categoirs = observable([]);
+
+    @observable
+    categorySelected = null;
 
     @observable
     products = observable([]);
@@ -29,6 +34,14 @@ export default class HomePageStore{
         this.getAllProducts();
     }
 
+    setValues = (productsCount,productsToSet) => {
+        const products = productsToSet || [];
+        const pagesCount = productsCount > 0 ? parseInt(productsCount / 12) + 1 : 1;
+        this.setPagesCount(pagesCount);
+        this.setProducts(products);
+    }
+
+
     getAllCategories = () => {
        return CategoriesService.getCategories()
         .then(cateogires => {
@@ -49,6 +62,18 @@ export default class HomePageStore{
             .catch(err => {
                 console.log("error with products ",err);
                 this.setProducts([])
+            })
+    }
+
+    getProductsByCategory = () => {
+        const categoryId = this.getCategorySelected;
+        return ProductsService.getProductsByCategory(categoryId)
+            .then(dataRes => {
+                this.setValues(dataRes.productsCount, dataRes.data) 
+            })
+            .catch(err => {
+                console.log("error with get products by category",err);
+                this.setProducts([]);
             })
     }
 
@@ -77,13 +102,6 @@ export default class HomePageStore{
         })
     }
 
-    setValues = (productsCount,productsToSet) => {
-        const products = productsToSet || [];
-        const pagesCount = productsCount > 0 ? parseInt(productsCount / 12) + 1 : 1;
-        this.setPagesCount(pagesCount);
-        this.setProducts(products);
-    }
-
     @action
     setCategoirs(categories){
         this.categoirs.replace(categories);
@@ -105,9 +123,11 @@ export default class HomePageStore{
     }
 
     @action
-    setCurrentPage(currentPage){
+    setCurrentPage(currentPage,resetCurrentPageOnly){
         this.currentPage = currentPage;
-        this.getAllProducts()
+        if(!resetCurrentPageOnly){
+            this.getAllProducts();
+        }
     }
 
     @computed
@@ -127,6 +147,7 @@ export default class HomePageStore{
 
     @action
     setSortById(sortId){
+        this.setCurrentPage(1,resetCurrentPage);
         this.sortById = sortId;
         this.getAllSortProducts();
     }
@@ -138,6 +159,7 @@ export default class HomePageStore{
 
     @action
     setFilterCondition(filterType,filterCondition){
+        this.setCurrentPage(1,resetCurrentPage)
         this.filterType = filterType;
         this.filterCondition = filterCondition;
         this.getAllFilteredProducts();
@@ -151,6 +173,18 @@ export default class HomePageStore{
     @computed
     get getFilterType(){
         return this.filterType;
+    }
+
+    @action
+    setCategorySelected(categoryID){
+        this.setCurrentPage(1,resetCurrentPage);
+        this.categorySelected = categoryID;
+        this.getProductsByCategory();
+    }
+
+    @computed
+    get getCategorySelected(){
+        return this.categorySelected;
     }
 
 }
