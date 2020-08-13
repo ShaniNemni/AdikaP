@@ -11,11 +11,22 @@ export default class HomePageStore{
 
     getAllCategories = () => {
        return CategoriesService.getCategories()
-        .then(respone => {
-            console.log("respone ",respone);
+        .then(cateogires => {
+            this.setCategoirs(cateogires);
         })
         .catch(err => {
             console.log("error with categoires ",err);
+            this.setCategoirs([]);
         })
+    }
+
+    @action
+    setCategoirs(categories){
+        this.categoirs.replace(categories);
+    }
+
+    @computed
+    get getCategories(){
+        return toJS(this.categoirs);
     }
 }
