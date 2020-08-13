@@ -1,10 +1,19 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './AdikaPagination.scss'
+import rootStores from '../../../stores';
+import { HOME_PAGE_SOTRE } from '../../../stores/Stores';
 
+const homePageStore = rootStores[HOME_PAGE_SOTRE];
 const AdikaPagination = ({pagesCount}) => {
     const [selectedPage,setPage] = useState(1);
 
+    useEffect(() => {
+        const currentPage = homePageStore.getCurrentPage;
+        setPage(currentPage);
+    }, [selectedPage])
+
     const onSelectPage = (pageNumber) => {
+        homePageStore.setCurrentPage(pageNumber);
         setPage(pageNumber);
     }
 

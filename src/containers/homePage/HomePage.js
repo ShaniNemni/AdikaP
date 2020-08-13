@@ -10,7 +10,7 @@ import rootStores from '../../stores/index';
 const homepageStore = rootStores[HOME_PAGE_SOTRE];
 const HomePage = () => {
     useEffect(() => {
-        homepageStore.getAllCategories();
+        homepageStore.initHomePage();
     })
     
     const coverImageWomanClass = 'women-cover';
