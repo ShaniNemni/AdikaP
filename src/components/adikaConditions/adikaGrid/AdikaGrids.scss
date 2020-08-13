@@ -1,0 +1,71 @@
+.grids-view {
+    display: flex;
+}
+
+.grid-view{
+    height: 26px;
+    border: 1px solid #878787;
+    position:relative;
+    margin-right: 10px;
+}
+
+.grid-view:before{
+    position:absolute;
+    top: 2px;
+    left: 2px;
+    width: 10px;
+    height: 20px;
+    background-color:#878787 ;   
+    content: "";
+}
+
+.view-1 {
+    width:28px;
+}
+
+.view-1:before{
+    width: 22px;
+    //background-color: black;
+}
+
+.view-2{
+    width:81px;
+}
+
+.view-2:before{
+    box-shadow: 13px 0 0 #878787, 26px 0 0 #878787, 39px 0 0 #878787, 52px 0 0 #878787, 65px 0 0 #878787;
+}
+
+.view-3{
+    width: 55px;
+}
+
+.view-3:before{
+    box-shadow: 13px 0 0 #878787, 26px 0 0 #878787, 39px 0 0 #878787;
+}
+
+.view-4{
+    width:42px;
+}
+
+.view-4::before{
+    box-shadow: 13px 0 0 #878787, 26px 0 0 #878787;
+}
+
+.view-6{
+    width: 30px;
+}
+
+.view-6:before{
+    box-shadow: 13px 0 0 #878787, 13px 0 0 #878787;
+}
+
+.view-5{
+    width: 68px;
+}
+
+.view-5:before{
+    box-shadow: 13px 0 0 #878787, 26px 0 0 #878787, 39px 0 0 #878787, 52px 0 0 #878787;
+}
+
+
