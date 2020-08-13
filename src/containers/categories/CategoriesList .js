@@ -4,6 +4,7 @@ import {IoIosArrowUp,IoIosArrowDown} from 'react-icons/io';
 import { observer } from 'mobx-react';
 import {HOME_PAGE_SOTRE} from '../../stores/Stores';
 import rootStores from '../../stores/index';
+import CategoryItem from './CategoryItem';
 
 const homePageStore = rootStores[HOME_PAGE_SOTRE];
 
@@ -33,15 +34,18 @@ class CategoriesList extends Component {
     renderCategories = () => {
         const getCategories = homePageStore.getCategories;
         const categories = getCategories.map(category => 
-            <li className={`col-12 col-md-2`} key={category.categoryID}>
-                <a className={'category-name'}>{category.categoryName}</a>
-            </li>
-        )
+                <CategoryItem key={category.categoryID} onCategorySelected={this.onCategorySelected} categoryName={category.categoryName} categoryID={category.categoryID}/>
+            )
         return(
             <ul className={'row'}>
                 {categories}
             </ul>
         )
+    }
+
+    onCategorySelected = (categoryID) => {
+        this.toggleCategories();
+        homePageStore.setCategorySelected(categoryID);
     }
 
     render(){

@@ -1,6 +1,69 @@
 @import '../../styles/variables.scss';
 
 .product-container{
+    .image-background{
+        position: relative;
+
+        .sizes-info{
+            position: absolute;
+            bottom: 5px;
+            width: 100%;
+            text-align: center;
+            text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.15);
+            color:$white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    }
+    .buttons-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        .hoverCommon{
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            z-index: 2;
+        }
+        .commonButton{
+            background-color: $white;
+            width: 50%;
+            text-align: center;
+            padding:5px;
+            border-radius: 50px;
+        }
+        .quick-view{
+            bottom:100px;
+
+            .button-text:hover{
+                color:$white
+            }
+        }
+        
+
+        .quick-shop{
+            bottom:60px;
+
+            .button-text:hover{
+                color:$dark_grey
+            }
+        }
+        
+        .button-text{
+            font-size: 14px;
+            font-weight: bold;
+            color:$black
+        }
+
+        
+
+        .commonButton:hover{
+            background-color: $black;
+            color:$white;
+    
+        }
+    }
+
     .product-title-price{
         height: 44px;
         width: 100%;
