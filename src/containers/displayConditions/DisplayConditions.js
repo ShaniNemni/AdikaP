@@ -9,13 +9,13 @@ const DisplayConditions = ({toggleDivFilters}) => {
     return(
         <div className={'display-condition container'}>
                 <div className={'row margin-vertical-10'}>
-                    <div className={'col-4'}>
+                    <div className={'col-4 col-lg-4 col-md-6'}>
                         <AdikaFilters toggleDivFilters={toggleDivFilters}/>
                     </div>
-                    <div className={'col-4'}>
+                    <div className={'col-4 col-lg-4 col-md-6'}>
                         <AdikaGrids/>
                     </div>
-                    <div className={'col-4'}>
+                    <div style={{display:'flex',justifyContent:'flex-end'}} className={'col-4 col-lg-4 col-md-6'}>
                         <AdikaSort/>
                     </div>
                 </div>
