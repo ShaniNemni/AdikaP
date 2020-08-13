@@ -4,7 +4,7 @@ export const CATEGORIES = '/category';
 export const PRODUCTS = '/product';
 
 export const GET_ALL_CATEGOIRES = CATEGORIES + '/allCategories'
-export const GET_ALL_PRODUCTS = PRODUCTS + '/allProducts';
-export const GET_ALL_PROUDCTS_BY_CATEGORIES = PRODUCTS + '/allProductsByCategory';
-export const GET_ALL_PROUDCTS_BY_FILTER = PRODUCTS + '/allProductsByFilter';
-export const GET_ALL_PROUDCTS_BY_SORT = PRODUCTS + '/allProductsBySort';
+export const GET_ALL_PRODUCTS = (page) => `${PRODUCTS}/allProducts?page=${page}`;
+export const GET_ALL_PROUDCTS_BY_CATEGORIES = (page) => `${PRODUCTS}/allProductsByCategory?page=${page}`;
+export const GET_ALL_PROUDCTS_BY_FILTER = (page) =>  `${PRODUCTS}/allProductsByFilter?page=${page}`;
+export const GET_ALL_PROUDCTS_BY_SORT = (page) => `${PRODUCTS}/allProductsBySort?page=${page}`;
