@@ -5,13 +5,12 @@ import AdikaSort from '../../components/adikaConditions/adikaSort/AdikaSort';
 import AdikaFilters from '../../components/adikaConditions/adikaFilters/AdikaFilters';
 import AdikaGrids from '../../components/adikaConditions/adikaGrid/AdikaGrids';
 
-const DisplayConditions = () => {
-    
+const DisplayConditions = ({toggleDivFilters}) => {
     return(
         <div className={'display-condition container'}>
                 <div className={'row margin-vertical-10'}>
                     <div className={'col-4'}>
-                        <AdikaFilters/>
+                        <AdikaFilters toggleDivFilters={toggleDivFilters}/>
                     </div>
                     <div className={'col-4'}>
                         <AdikaGrids/>

@@ -1,0 +1,11 @@
+@import '../../styles/variables.scss';
+
+.display-close{
+    display:none;
+}
+
+@media (min-width:$min_width) {
+    .display-filter{
+        height:400px;
+    }
+}

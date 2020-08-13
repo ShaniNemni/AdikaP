@@ -11,12 +11,13 @@ import {HOME_PAGE_SOTRE} from '../../../stores/Stores';
 
 const homePageStore = rootStores[HOME_PAGE_SOTRE];
 const FILTER = 'Filter';
-const AdikaFilters = () => {
+const AdikaFilters = ({toggleDivFilters}) => {
     const [filterPressed,setFilterPressed] = useState(false);
 
     const toggleFilter = () => {
         const filterPressedValue = !filterPressed;
         setFilterPressed(filterPressedValue);
+        toggleDivFilters();
     }
 
     const iconToDisplay = () => {
@@ -73,7 +74,7 @@ const AdikaFilters = () => {
             )
         }
         return(
-          <div className={displayFilterOptionsClassname  + ' container'}>
+          <div className={displayFilterOptionsClassname  + ' container' + ' filter-menu'}>
                 <div className={'row'}>
                         {renderOptions()}
                 </div>
