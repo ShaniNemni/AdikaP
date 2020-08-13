@@ -3,6 +3,7 @@ import React,{useState} from 'react';
 import './DisplayConditions.scss';
 import AdikaSort from '../../components/adikaConditions/adikaSort/AdikaSort';
 import AdikaFilters from '../../components/adikaConditions/adikaFilters/AdikaFilters';
+import AdikaGrids from '../../components/adikaConditions/adikaGrid/AdikaGrids';
 
 const DisplayConditions = () => {
     
@@ -11,6 +12,9 @@ const DisplayConditions = () => {
                 <div className={'row margin-vertical-10'}>
                     <div className={'col-4'}>
                         <AdikaFilters/>
+                    </div>
+                    <div className={'col-4'}>
+                        <AdikaGrids/>
                     </div>
                     <div className={'col-4'}>
                         <AdikaSort/>
