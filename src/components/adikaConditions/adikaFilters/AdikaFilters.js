@@ -1,13 +1,15 @@
 import React,{useState} from 'react';
 import {FilterOptionsList} from '../../../common/Lists';
-
 import './AdikaFilters.scss';
 import {isMobile} from 'react-device-detect';
 import {FaSortAlphaUpAlt} from 'react-icons/fa';
 import {MdClose} from 'react-icons/md';
 import AdikaDrawer from '../../adikaDrawer/AdikaDrawer';
 import AdikaFilter from './AdikaFilter';
+import rootStores from '../../../stores/index';
+import {HOME_PAGE_SOTRE} from '../../../stores/Stores';
 
+const homePageStore = rootStores[HOME_PAGE_SOTRE];
 const FILTER = 'Filter';
 const AdikaFilters = () => {
     const [filterPressed,setFilterPressed] = useState(false);
@@ -25,17 +27,23 @@ const AdikaFilters = () => {
         return <FaSortAlphaUpAlt className={'icon-filter'}/>;
     }
 
+    const onSelectedFilter = (filterKey,filterCondition) => {
+        toggleFilter();
+        homePageStore.setFilterCondition(filterKey,filterCondition);
+    }
+
     const renderOptions = () => {
         const options = FilterOptionsList.map(filter => {
             const filter_key = filter.filterType;
+            const filter_name = filter.filterName;
             const values = filter.filterOptions;
             const filterByType = values.map(option => {
-                return <AdikaFilter key={option} filterKey={filter_key} option={option}/>
+                return <AdikaFilter onSelectedFilter={onSelectedFilter} key={option} filterKey={filter_key} option={option}/>
             })
 
             return(
                 <div key={filter_key}  className={'col-3 col-md-3 filters-view'}>
-                    <h1 className={'filter-key'}>{filter_key}</h1>
+                    <h1 className={'filter-key'}>{filter_name}</h1>
                     <ul className={'filter-block'}>
                         {filterByType}
                     </ul>

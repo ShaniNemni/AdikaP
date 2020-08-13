@@ -1,8 +1,9 @@
 import React from 'react';
+import {Filters} from '../../../common/Lists';
 
-const AdikaFilter = ({filterKey,option}) => {
+const AdikaFilter = ({filterKey,option,onSelectedFilter}) => {
     const renderByFilterType = () => {
-        if(filterKey === 'BY COLOR') {
+        if(filterKey === Filters.COLOR) {
             return(
                 <span style={{backgroundColor:option}} className={'colors-span'} />
             )
@@ -10,7 +11,7 @@ const AdikaFilter = ({filterKey,option}) => {
     }
 
     return (
-        <li className={'li-option'}>
+        <li onClick={() => onSelectedFilter(filterKey,option)} className={'li-option'}>
             {renderByFilterType()}
             {option}
         </li>

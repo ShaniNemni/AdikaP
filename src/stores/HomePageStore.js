@@ -64,6 +64,19 @@ export default class HomePageStore{
             })
     }
 
+    getAllFilteredProducts = () => {
+        const filterType = this.getFilterType;
+        const filterCondition = this.getFilterCondition;
+        return ProductsService.getProductsByFilter(filterType,filterCondition)
+        .then(dataRes => {
+            this.setValues(dataRes.productsCount, dataRes.data) 
+        })
+        .catch(err => {
+            console.log("error with sort products ",err);
+            this.setProducts([]);
+        })
+    }
+
     setValues = (productsCount,productsToSet) => {
         const products = productsToSet || [];
         const pagesCount = productsCount > 0 ? parseInt(productsCount / 12) + 1 : 1;
@@ -124,18 +137,15 @@ export default class HomePageStore{
     }
 
     @action
-    setFilterCondition(filterCondition){
+    setFilterCondition(filterType,filterCondition){
+        this.filterType = filterType;
         this.filterCondition = filterCondition;
+        this.getAllFilteredProducts();
     }
 
     @computed
     get getFilterCondition(){
-        return this.filterCondition;
-    }
-
-    @action
-    setFilterType(filterType){
-        this.filterType = filterType;
+        return this.filterCondition.toLowerCase();
     }
 
     @computed
