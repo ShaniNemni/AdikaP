@@ -5,7 +5,6 @@ import { observer } from 'mobx-react';
 import {HOME_PAGE_SOTRE} from '../../stores/Stores';
 import rootStores from '../../stores/index';
 
-const CATEGORIES_LIST = [{name:'first Category',categoryID:1},{name:'second Category',categoryID:2},{name:'third Category',categoryID:3},{name:'four Category',categoryID:4},{name:'five Category',categoryID:5},{name:'six Category',categoryID:6}]
 const homePageStore = rootStores[HOME_PAGE_SOTRE];
 
 @observer
@@ -33,7 +32,6 @@ class CategoriesList extends Component {
 
     renderCategories = () => {
         const getCategories = homePageStore.getCategories;
-        console.log("renderCategories getCategories ",getCategories);
         const categories = getCategories.map(category => 
             <li className={`col-12 col-md-2`} key={category.categoryID}>
                 <a className={'category-name'}>{category.categoryName}</a>
