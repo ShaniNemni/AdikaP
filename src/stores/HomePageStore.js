@@ -14,6 +14,15 @@ export default class HomePageStore{
 
     @observable
     currentPage = 1;
+
+    @observable
+    filterType = null;
+
+    @observable
+    filterCondition = null;
+
+    @observable
+    sortById = null;
     
     initHomePage(){
         this.getAllCategories();
@@ -35,15 +44,31 @@ export default class HomePageStore{
         const currentPage = this.getCurrentPage;
         return ProductsService.getProducts(currentPage)
             .then(dataRes => {
-                const products = dataRes.data || [];
-                const pagesCount = dataRes.productsCount > 0 ? parseInt(dataRes.productsCount / 12) + 1 : 1;
-                this.setPagesCount(pagesCount);
-                this.setProducts(products);
+                this.setValues(dataRes.productsCount, dataRes.data)
             })
             .catch(err => {
                 console.log("error with products ",err);
                 this.setProducts([])
             })
+    }
+
+    getAllSortProducts = () => {
+        const sortById = this.getSortByID;
+        return ProductsService.getProductsBySort(sortById)
+            .then(dataRes => {
+                this.setValues(dataRes.productsCount, dataRes.data) 
+            })
+            .catch(err => {
+                console.log("error with sort products ",err);
+                this.setProducts([]);
+            })
+    }
+
+    setValues = (productsCount,productsToSet) => {
+        const products = productsToSet || [];
+        const pagesCount = productsCount > 0 ? parseInt(productsCount / 12) + 1 : 1;
+        this.setPagesCount(pagesCount);
+        this.setProducts(products);
     }
 
     @action
@@ -85,6 +110,37 @@ export default class HomePageStore{
     @computed
     get getPagesCount(){
         return this.pagesCount;
+    }
+
+    @action
+    setSortById(sortId){
+        this.sortById = sortId;
+        this.getAllSortProducts();
+    }
+
+    @computed
+    get getSortByID() {
+        return this.sortById;
+    }
+
+    @action
+    setFilterCondition(filterCondition){
+        this.filterCondition = filterCondition;
+    }
+
+    @computed
+    get getFilterCondition(){
+        return this.filterCondition;
+    }
+
+    @action
+    setFilterType(filterType){
+        this.filterType = filterType;
+    }
+
+    @computed
+    get getFilterType(){
+        return this.filterType;
     }
 
 }

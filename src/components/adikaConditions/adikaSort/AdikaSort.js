@@ -1,11 +1,16 @@
 import React,{useState} from 'react';
+import {isMobile} from 'react-device-detect';
 import '../AdikaConditions.scss';
 import {IoIosArrowUp,IoIosArrowDown} from 'react-icons/io';
 import AdikaDrawer from '../../adikaDrawer/AdikaDrawer';
 import AdikaSortDrawerMobile from '../adikaSort/AdikaSortDrawerMobile';
 import AdikaSortWeb from './AdikaSortWeb';
+import rootStores from '../../../stores/index';
+import {HOME_PAGE_SOTRE} from '../../../stores/Stores';
 
+const homePageStore = rootStores[HOME_PAGE_SOTRE];
 const SORT_BY = 'Sort by';
+
 const AdikaSort = () => {
     const [sortByPressedMobile,setSortByMobilePressed] = useState(false);
     const [sortByPressedWeb,setSortByWebPressed] = useState(false);
@@ -40,6 +45,15 @@ const AdikaSort = () => {
         return sortByPressedWeb ? 'display-web-sort' : 'hide-web-sort'; 
     }
 
+    const onSortSelected = (sortId) => {
+        if(isMobile) {
+            toggleSortByMobile()
+        }else{
+            toggleSortByWeb() 
+        }
+
+        homePageStore.setSortById(sortId);
+    }
     const webClass = getWebClass();
     return(
         <div className='sort-by-container'>
@@ -49,7 +63,7 @@ const AdikaSort = () => {
                     {displayIconMobile()}
                 </div>
                  <AdikaDrawer drawerPressed={sortByPressedMobile} toggleDrawer={toggleSortByMobile} drawerPosition={'bottom'}>
-                    <AdikaSortDrawerMobile/>
+                    <AdikaSortDrawerMobile onSortSelected={onSortSelected}/>
                  </AdikaDrawer>
             </div>
             <div className={'desktop-only'}>
@@ -58,7 +72,7 @@ const AdikaSort = () => {
                     {displayIconWeb()}
                 </div>
                 <div className={webClass}>
-                    {<AdikaSortWeb/>}
+                    {<AdikaSortWeb onSortSelected={onSortSelected}/>}
                 </div>
             </div>
         </div>

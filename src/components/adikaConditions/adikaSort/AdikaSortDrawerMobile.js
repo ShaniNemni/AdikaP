@@ -2,12 +2,12 @@ import React from 'react';
 import {SortOptionsList} from '../../../common/Lists';
 
 const SORT_BY = 'SORT BY';
-const AdikaSortDrawerMobile = () => {
+const AdikaSortDrawerMobile = ({onSortSelected}) => {
 
     const renderOptions = () => {
         const options = SortOptionsList.map(sort => {
             return(
-                <a key={sort.sortID} className={'sort-option-title'}>{sort.sortName}</a>
+                <a key={sort.sortID} onClick={() => onSortSelected(sort.sortID)} className={'sort-option-title'}>{sort.sortName}</a>
             )
         })
 

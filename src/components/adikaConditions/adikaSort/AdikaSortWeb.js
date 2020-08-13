@@ -1,12 +1,12 @@
-import React from 'react';
+import React,{useState} from 'react';
 import './AdikaSort.scss';
 import {SortOptionsList} from '../../../common/Lists';
 
-const AdikaSortWeb = ({closeModal}) => {
+const AdikaSortWeb = ({onSortSelected}) => {
     const renderOptions = () => {
         const options = SortOptionsList.map(sort => {
             return(
-                <a key={sort.sortID} className={'sort-option-title'}>{sort.sortName}</a>
+                <a onClick={() => onSortSelected(sort.sortID)} key={sort.sortID} className={'sort-option-title'}>{sort.sortName}</a>
             )
         })
 
