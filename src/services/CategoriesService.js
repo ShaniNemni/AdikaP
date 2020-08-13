@@ -1,5 +1,5 @@
 import Server from '../server/Server';
-import {GET_ALL_PROUDCTS_BY_CATEGORIES} from '../server/urls';
+import {GET_ALL_CATEGOIRES} from '../server/urls';
 
 class CategoriesService {
     constructor(){
@@ -7,10 +7,10 @@ class CategoriesService {
     }
 
     getCategories = () => {
-        return this.server.get(GET_ALL_PROUDCTS_BY_CATEGORIES)
+        return this.server.get(GET_ALL_CATEGOIRES)
             .then(response => {
-                console.log("response ",response);
-                return response;
+                const categories = response && response.data || [];
+                return categories;
             })
             .catch(err => {
                 console.log("error with get cagegories ",err);
