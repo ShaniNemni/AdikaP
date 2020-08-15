@@ -1,15 +1,16 @@
 import React from 'react';
-
+import {RiShoppingCartLine} from 'react-icons/ri';
+import {BsEye} from 'react-icons/bs';
 const HoverProduct = () => {
     return(
         <div className={'buttons-container'}>
           <span className={'hoverCommon commonButton quick-view'}>
-                <b className={'button-text'}>{'Quick view'}</b>
-                <i className='iccl iccl-cart'/>
+                <a className={'button-text'}>{'Quick view'}</a>
+                <BsEye className={'icon-hover'}/>
           </span>
           <span className={'hoverCommon commonButton quick-shop'}>
-              <b className={'button-text'}>{'Quick Shop'}</b>
-              <i className='iccl iccl-cart'/>
+              <a className={'button-text'}>{'Quick Shop'}</a>
+              <RiShoppingCartLine className={'icon-hover'}/>
           </span>
         </div>
     )

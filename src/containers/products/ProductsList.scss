@@ -25,6 +25,19 @@
             text-align: center;
             z-index: 2;
         }
+
+        .hoverCommon .icon-hover{
+            display: none;
+        }
+        .hoverCommon:hover a{
+            display: none;
+        }
+
+        .hoverCommon:hover .icon-hover{
+            display: block;
+            width: 100%;
+            color:$white
+        }
         .commonButton{
             background-color: $white;
             width: 50%;
@@ -32,35 +45,24 @@
             padding:5px;
             border-radius: 50px;
         }
-        .quick-view{
-            bottom:100px;
-
-            .button-text:hover{
-                color:$white
-            }
-        }
         
-
-        .quick-shop{
-            bottom:60px;
-
-            .button-text:hover{
-                color:$dark_grey
-            }
-        }
-        
-        .button-text{
-            font-size: 14px;
-            font-weight: bold;
-            color:$black
-        }
-
-        
-
         .commonButton:hover{
             background-color: $black;
             color:$white;
     
+        }
+        .quick-view{
+            bottom:100px;
+        }
+
+        .quick-shop{
+            bottom:60px;
+        }
+  
+        .button-text{
+            font-size: 14px;
+            font-weight: bold;
+            color:$black
         }
     }
 
