@@ -9,6 +9,10 @@
     margin-right: 10px;
 }
 
+.grid-selected.grid-view{
+    border: 1px solid #000 ;
+}
+
 .grid-view:before{
     position:absolute;
     top: 2px;
@@ -17,6 +21,10 @@
     height: 20px;
     background-color:#878787 ;   
     content: "";
+}
+
+.grid-selected.grid-view:before{   
+    background-color:#000 ;   
 }
 
 .view-1 {
@@ -28,12 +36,20 @@
     //background-color: black;
 }
 
+.grid-selected.view-1:before{
+        background-color: 000;
+}
+
 .view-2{
     width:81px;
 }
 
 .view-2:before{
     box-shadow: 13px 0 0 #878787, 26px 0 0 #878787, 39px 0 0 #878787, 52px 0 0 #878787, 65px 0 0 #878787;
+}
+
+.grid-selected.view-2:before{
+    box-shadow: 13px 0 0 #000, 26px 0 0 #000, 39px 0 0 #000, 52px 0 0 #000, 65px 0 0 #000;
 }
 
 .view-3{
@@ -44,12 +60,21 @@
     box-shadow: 13px 0 0 #878787, 26px 0 0 #878787, 39px 0 0 #878787;
 }
 
+.grid-selected.view-3:before{
+    box-shadow: 13px 0 0 #000, 26px 0 0 #000, 39px 0 0 #000;
+}
+
+
 .view-4{
     width:42px;
 }
 
-.view-4::before{
+.view-4:before{
     box-shadow: 13px 0 0 #878787, 26px 0 0 #878787;
+}
+
+.grid-selected.view-4:before{
+    box-shadow: 13px 0 0 #000, 26px 0 0 #000;
 }
 
 .view-6{
@@ -60,12 +85,20 @@
     box-shadow: 13px 0 0 #878787, 13px 0 0 #878787;
 }
 
+.grid-selected.view-6:before{
+    box-shadow: 13px 0 0 #000, 13px 0 0 #000;
+}
+
 .view-5{
     width: 68px;
 }
 
 .view-5:before{
     box-shadow: 13px 0 0 #878787, 26px 0 0 #878787, 39px 0 0 #878787, 52px 0 0 #878787;
+}
+
+.grid-selected.view-5:before{
+    box-shadow: 13px 0 0 #000, 26px 0 0 #000, 39px 0 0 #000, 52px 0 0 #000;
 }
 
 
