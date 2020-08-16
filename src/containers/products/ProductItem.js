@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import HoverProduct from './HoverProduct';
 
-const ProductItem = ({product}) => {
+const ProductItem = ({product,colClass}) => {
     const [isShown, setIsShown] = useState(false);
     const [imageToDisplay,setImage] = useState(product.images[0]);
 
@@ -17,7 +17,7 @@ const ProductItem = ({product}) => {
 
     const sizesToDispaly = product.sizes.toString();
      return(
-            <div className={'product-container col-lg-15 col-md-3 col-6'}>
+            <div className={`product-container ${colClass}`}>
                 <div onMouseOver={mouseHover} onMouseLeave={mouseLeave} className={'image-background'} style={{backgroundImage:`url(${imageToDisplay})`,paddingTop:'130%',backgroundSize:'contain',backgroundPosition:'center center',backgroundRepeat:'no-repeat'}}>
                   {isShown && <HoverProduct/>}
                   {isShown &&  <p className={'sizes-info '}>{sizesToDispaly}</p>}

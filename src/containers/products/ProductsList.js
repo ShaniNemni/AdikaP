@@ -1,4 +1,5 @@
 import React,{Component} from 'react';
+import {isMobile} from 'react-device-detect';
 import './ProductsList.scss';
 import {ProductListToDelete} from '../../common/ProductListToDelete';
 import ProductItem from './ProductItem';
@@ -12,10 +13,22 @@ const homePageStore = rootStores[HOME_PAGE_SOTRE];
 class ProductsList extends Component {
     renderProducts = () => {
         const proudctsList = homePageStore.getProducts;
+        const colClass = this.getColClass();
         const products = proudctsList.map(product => {
-              return <ProductItem key={product.id} product={product}/>
+              return <ProductItem colClass={colClass} key={product.id} product={product}/>
           })
           return products;
+      }
+
+      getColClass = () => {
+          const classCol = homePageStore.rowsToDisplay;
+          const prodInRows = homePageStore.getProductCountInRow;
+          if(isMobile) {
+            return `col-${classCol}`;
+          }else if(prodInRows === 5) {
+            return `costum-col-5`;
+          }
+          return `col-lg-${classCol}`;
       }
 
       getPagesNumber = () => {
@@ -33,7 +46,7 @@ class ProductsList extends Component {
         return(
             <div>
                 <div className={'products-container container'}>
-                    <div className={'row'}>
+                    <div className={`row`}>
                         {this.renderProducts()}
                     </div>
                 </div>

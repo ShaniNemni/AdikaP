@@ -34,6 +34,13 @@
     }
 }
 
+.costum-col-5{
+    flex: 0 0 20%;
+    padding-right: 15px;
+    padding-left: 15px ;
+    
+}
+
 @media(max-width:$max-width){
     .buttons-container {
         display: flex;
