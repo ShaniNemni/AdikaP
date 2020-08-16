@@ -15,10 +15,54 @@
             font-weight: bold;
         }
     }
+    .product-title-price{
+        height: 44px;
+        width: 100%;
+        text-align: left;
+        margin-top: 10px;
+
+        .product-title{
+            font-weight: bold;
+            font-size: 14px;
+            color:$black;
+            margin-bottom: 0;
+        }
+        .product-price{
+            font-size: 14px; 
+            color:$dark_grey;
+        }
+    }
+}
+
+@media(max-width:$max-width){
+    .buttons-container {
+        display: flex;
+        background-color: $white;
+        flex-direction: column;
+        position: absolute;
+        border-color: black;
+        border-width: 2px;
+        right:10px;
+        bottom: 30px;
+        border-radius: 50px;
+        width: 40px;
+
+        .button-text {
+            display: none;
+        }
+        .icon-hover{
+            width: 100%;
+            justify-content: center;
+        }
+    }
+}
+
+@media (min-width:$min-width) {
     .buttons-container {
         width: 100%;
         display: flex;
         justify-content: center;
+
         .hoverCommon{
             position: absolute;
             width: 100%;
@@ -28,6 +72,7 @@
 
         .hoverCommon .icon-hover{
             display: none;
+            height:25px;
         }
         .hoverCommon:hover a{
             display: none;
@@ -36,6 +81,7 @@
         .hoverCommon:hover .icon-hover{
             display: block;
             width: 100%;
+            height:25px;
             color:$white
         }
         .commonButton{
@@ -52,35 +98,17 @@
     
         }
         .quick-view{
-            bottom:100px;
+            bottom:120px;
         }
 
         .quick-shop{
-            bottom:60px;
+            bottom:80px;
         }
   
         .button-text{
             font-size: 14px;
             font-weight: bold;
             color:$black
-        }
-    }
-
-    .product-title-price{
-        height: 44px;
-        width: 100%;
-        text-align: left;
-        margin-top: 10px;
-
-        .product-title{
-            font-weight: bold;
-            font-size: 14px;
-            color:$black;
-            margin-bottom: 0;
-        }
-        .product-price{
-            font-size: 14px; 
-            color:$dark_grey;
         }
     }
 }
