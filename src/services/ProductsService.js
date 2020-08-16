@@ -1,9 +1,20 @@
 import Server from '../server/Server';
-import {GET_ALL_PRODUCTS,GET_ALL_PROUDCTS_BY_SORT,GET_ALL_PROUDCTS_BY_FILTER,GET_ALL_PROUDCTS_BY_CATEGORIES} from '../server/urls';
+import {GET_ROW_COUNT,GET_ALL_PRODUCTS,GET_ALL_PROUDCTS_BY_SORT,GET_ALL_PROUDCTS_BY_FILTER,GET_ALL_PROUDCTS_BY_CATEGORIES} from '../server/urls';
 
 class ProductsService {
     constructor(){
         this.server = Server;
+    }
+
+    getRowsCount = (productsCountInRow) => {
+        return this.server.get(GET_ROW_COUNT(productsCountInRow))
+            .then(response => {
+                const data = response && response.data || null;
+                return data;
+            })
+            .catch(err => {
+                console.log("error with get rows ",err);
+            })
     }
 
     getProducts = (page) => {

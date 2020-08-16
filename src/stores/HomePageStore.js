@@ -28,6 +28,12 @@ export default class HomePageStore{
 
     @observable
     sortById = null;
+
+    @observable
+    rowsToDisplay = 6;
+
+    @observable
+    productsCountInRow = 2;
     
     initHomePage(){
         this.getAllCategories();
@@ -41,6 +47,26 @@ export default class HomePageStore{
         this.setProducts(products);
     }
 
+    getNumOfRowsToDisplay = () => {
+        const productsToDispalyInRow = this.getProductCountInRow;
+        const defaultProductsInRow = 2;
+        const defaultRowsToDisplay = 6;
+        return ProductsService.getRowsCount(productsToDispalyInRow)
+            .then(res => {
+                if(res) {
+                    const data = res.data;
+                    this.setGrid(data);
+                }else{
+                    this.setGrid(defaultRowsToDisplay);
+                    this.setProductCountInRow(defaultProductsInRow,true)
+                }
+            })
+            .catch(err => {
+                console.log("error with get num of rows to display ",err);
+                this.setGrid(defaultRowsToDisplay);    
+                this.setProductCountInRow(defaultProductsInRow,true)
+            })
+    }
 
     getAllCategories = () => {
        return CategoriesService.getCategories()
@@ -187,4 +213,26 @@ export default class HomePageStore{
         return this.categorySelected;
     }
 
+    @action
+    setGrid(rowsToDisplay){
+        this.rowsToDisplay = rowsToDisplay;
+    }
+
+    @computed
+    get getRowsToDisplay(){
+        return this.rowsToDisplay;
+    }
+
+    @action 
+    setProductCountInRow(productsCountInRow,resetValueOnly) {
+        this.productsCountInRow = productsCountInRow;
+        if(!resetValueOnly) {
+            this.getNumOfRowsToDisplay();
+        }
+    }
+
+    @computed
+    get getProductCountInRow(){
+        return this.productsCountInRow;
+    }
 }
